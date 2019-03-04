@@ -3,17 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
     android:layout_height="match_parent"
     tools:context=".QuizCatagoryActivity">
 
-    <TextView
-        android:id="@+id/tvCategoryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Category"
-        android:layout_margin="20dp"
-        android:textSize="25sp"/>
+    <include layout="@layout/layout_app_bar"
+        android:id="@+id/toolbarCategory"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvCategoryTitle"-->
+        <!--android:layout_below="@+id/toolbarCategory"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="የመፅሃፍ ቅዱስ ክፍል ምረጥ"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="22sp"/>-->
 
     <RelativeLayout
         android:id="@+id/llContainer"
@@ -21,15 +25,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/container_background"
-        android:layout_marginBottom="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_below="@+id/tvCategoryTitle">
+        android:layout_below="@+id/toolbarCategory">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvCategoryMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:background="@android:color/white"
+            android:paddingLeft="20dp">
         </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>

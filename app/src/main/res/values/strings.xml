@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Bible Quiz Amharic</string>
     <string name="copyright_message">This is directly translated from the english Bible Quiz app.</string>
+    <string name="about">About</string>
 </resources>

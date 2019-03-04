@@ -8,6 +8,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -23,22 +26,21 @@ public class QuizCatagoryActivity extends AppCompatActivity {
     public static final String EXTRA_CATEGORY_ID = "extraCategoryId";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
 
-//    public static final String SHARED_PREFS = "sharedPrefs";
-//    public static final String KEY_HIGHSCORE = "keyHighscore";
-
     private QuizDBHelper dbHelper;
-
     private CategoryAdapter adapter;
-
     private int highscore;
+
+    // Views
+    Toolbar toolbarCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_catagory);
-//        setTitle("Select Category");
 
-//        loadHighscore();
+        toolbarCategory = findViewById(R.id.toolbarCategory);
+        setSupportActionBar(toolbarCategory);
+        getSupportActionBar().setTitle("የመፅሃፍ ቅዱስ ክፍል ምረጥ");
     }
 
     @Override
@@ -66,7 +68,6 @@ public class QuizCatagoryActivity extends AppCompatActivity {
         });
         rvCategoryMain.setAdapter(adapter);
         rvCategoryMain.setItemAnimator(new DefaultItemAnimator());
-        rvCategoryMain.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
     }
 
     @Override
@@ -84,10 +85,21 @@ public class QuizCatagoryActivity extends AppCompatActivity {
         }
     }
 
-//    private void loadHighscore(){
-//        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-//        highscore = prefs.getInt(KEY_HIGHSCORE,0);
-//        tvHighscore.setText("Highscore: " + highscore);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.aboutMain){
+            startActivity(new Intent(QuizCatagoryActivity.this,AboutActivity.class));
+        }
+
+        return true;
+    }
 }

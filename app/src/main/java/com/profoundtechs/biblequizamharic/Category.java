@@ -1,5 +1,7 @@
 package com.profoundtechs.biblequizamharic;
 
+import java.io.InputStream;
+
 public class Category {
     public static final int PROGRAMMING = 1;
     public static final int GEOGRAPHY = 2;

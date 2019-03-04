@@ -2,12 +2,12 @@ package com.profoundtechs.biblequizamharic;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,22 +17,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
 
 public class StartingScreenActivity extends AppCompatActivity {
-//    private static final int REQUEST_CODE_QUIZ = 1;
-//    public static final String EXTRA_CATEGORY_ID = "extraCategoryId";
-//    public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
-//
-//    public static final String SHARED_PREFS = "sharedPrefs";
-//    public static final String KEY_HIGHSCORE = "keyHighscore";
-//
     private QuizDBHelper databaseHelper;
 
     private TextView tvHighscore;
+    private TextView tvAcknowledgment;
     private Spinner spCategory;
 
     private int highscore;
+
+    private Button btnStartQuiz;
+    private Animation btn_start_anim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +36,15 @@ public class StartingScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting_screen);
         setTitle("");
 
-//        tvHighscore = findViewById(R.id.tvHighscore);
         spCategory = findViewById(R.id.spCategory);
+//        tvAcknowledgment = findViewById(R.id.tvAcknowledgment);
+//        tvAcknowledgment.setText("<a href='https://lifeline-techs.com'>My Website</a>");
+//        Linkify.addLinks(tvAcknowledgment,Linkify.ALL);
 
-        Button btnStartQuiz = findViewById(R.id.btnStartQuiz);
+        btnStartQuiz = findViewById(R.id.btnStartQuiz);
+        btn_start_anim = AnimationUtils.loadAnimation(this,R.anim.btn_start_anim);
+        btnStartQuiz.startAnimation(btn_start_anim);
+
         btnStartQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,9 +64,6 @@ public class StartingScreenActivity extends AppCompatActivity {
                 return;
             }
         }
-
-//        loadCategories();
-//        loadHighscore();
     }
 
     //Method for copying database (Used above)
@@ -90,24 +88,8 @@ public class StartingScreenActivity extends AppCompatActivity {
     }
 
     private void startQuiz() {
-//        Category selectedCategory = (Category) spCategory.getSelectedItem();
-//        int catagoryId = selectedCategory.getId();
-//        String categoryName = selectedCategory.getName();
-
         Intent intent = new Intent(StartingScreenActivity.this,QuizCatagoryActivity.class);
         startActivity(intent);
         finish();
-//        intent.putExtra(EXTRA_CATEGORY_ID,catagoryId);
-//        intent.putExtra(EXTRA_CATEGORY_NAME,categoryName);
-//        startActivityForResult(intent,REQUEST_CODE_QUIZ);
     }
-
-//    private void loadCategories() {
-//        QuizDBHelper dbHelper = QuizDBHelper.getInstance(this);
-//        List<Category> categories = dbHelper.getAllCategories();
-//        ArrayAdapter<Category> adapterCategories = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_1,categories);
-//        adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spCategory.setAdapter(adapterCategories);
-//    }
 }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:padding="16dp"
+    android:background="@drawable/app_background_1"
+    android:padding="10dp"
     tools:context=".StartingScreenActivity">
 
     <RelativeLayout
@@ -13,27 +13,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/container_background"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginBottom="40dp">
 
         <ImageView
             android:id="@+id/ivStartingTitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="180dp"
             android:src="@drawable/title_main"/>
 
         <TextView
+            android:id="@+id/tvAcknowledgment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/copyright_message"
+            android:text="Questions on this app are directly translated from the 'Bible Quiz' app"
             android:layout_below="@+id/ivStartingTitle"
+            android:textStyle="italic"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
             android:textColor="@android:color/white"/>
 
         <!--

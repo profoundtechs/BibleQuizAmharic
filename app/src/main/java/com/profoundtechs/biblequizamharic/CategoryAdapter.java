@@ -35,13 +35,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ItemVi
     public void onBindViewHolder(final CategoryAdapter.ItemViewHolder holder, int position) {
 
         holder.bind(categoryList.get(position),listener);
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//            }
-//        });
     }
 
     @Override
@@ -58,15 +51,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ItemVi
             tvCategoryMaxScore = itemView.findViewById(R.id.tvCategoryMaxScore);
         }
 
-//        @Override
-//        public void onClick(View v) {
-//            if (mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
-//        }
-
         public void bind(final Category category, final ItemClickListener listener) {
-//            final String item = list.get(position);
             tvCategoryTitle.setText(category.getName());
-            tvCategoryMaxScore.setText("High score: " + category.getHighScore());
+            tvCategoryMaxScore.setText("ከፍተኛ ውጤት: " + category.getHighScore());
             itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,8 +62,4 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ItemVi
         });
         }
     }
-
-//    public void setClickListener(ItemClickListener itemClickListener) {
-//        this.mClickListener = itemClickListener;
-//    }
 }
